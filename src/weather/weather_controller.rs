@@ -10,7 +10,11 @@ impl WeatherController {
     }
 
     pub async fn get_weather(self) -> Result<(), Box<dyn std::error::Error>> {
-        let cities: Vec<String> = vec![self.cli_config.city];
+        let mut default = "Portland".to_string();
+        if self.cli_config.city.is_some() {
+            default = self.cli_config.city.unwrap();
+        };
+        let cities: Vec<String> = vec![default];
     
         for city in cities {
             let url = format!("https://api.weatherapi.com/v1/current.json?key=f618ac31e4a741d7811182635230206&q={}&aqi=no", city);
@@ -26,4 +30,5 @@ impl WeatherController {
     
         Ok(())
     }
+
 }

@@ -3,9 +3,9 @@
 TODO:
 
 Phase 1:
-Get zip code from machine as default location
-Set default city to override location
-Add ability to turn off default city
+if no params, use default.
+if no params and no default, prompt for default
+flag to set default
 
 Phase 2: 
 Customize output
